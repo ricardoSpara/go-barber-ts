@@ -16,9 +16,6 @@ appointmentsRoutes.post('/', (request, response) => {
     const { provider, date } = request.body;
     const parsedDate = parseISO(date);
 
-    /**
-     * Dependecy inversion (SOLID)
-     */
     const createAppointment = new CreateAppointmentService(
       appointmentRepository,
     );
