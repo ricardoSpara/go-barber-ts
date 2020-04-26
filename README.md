@@ -1,3 +1,6 @@
+# Go Barbaer:
+  Project developed using Node js | TS | Redis | PostgreSQL | JWT | Mongo :rocket:
+
 ## Services:
 
 * postgres:
