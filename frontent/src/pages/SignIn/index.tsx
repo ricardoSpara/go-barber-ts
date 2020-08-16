@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Container, Content, Background, AnimationContainer } from './styles';
 import logoImg from '../../assets/logo.svg';
 import getValidationErros from '../../utils/getValidationErrors';
@@ -20,6 +20,8 @@ interface SignInFormData {
 
 const SignIn: React.FC = () => {
     const formRef = useRef<FormHandles>(null);
+
+    const history = useHistory();
 
     const { signIn } = useAuth();
     const { addToast } = useToast();
@@ -40,11 +42,7 @@ const SignIn: React.FC = () => {
 
                 await signIn({ email: data.email, password: data.password });
 
-                addToast({
-                    title: 'Erro na autenticação',
-                    description:
-                        'Ocorreu um erro ao fazer login, cheque as credenciais.',
-                });
+                history.push('/dashboard');
             } catch (err) {
                 if (err instanceof Yup.ValidationError) {
                     const errors = getValidationErros(err);
