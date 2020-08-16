@@ -4,7 +4,8 @@ import * as Yup from 'yup';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 
-import { Container, Content, Background } from './styles';
+import { Link } from 'react-router-dom';
+import { Container, Content, Background, AnimationContainer } from './styles';
 import logoImg from '../../assets/logo.svg';
 import getValidationErros from '../../utils/getValidationErrors';
 import Input from '../../components/Input';
@@ -38,33 +39,35 @@ const SignUp: React.FC = () => {
             <Background />
 
             <Content>
-                <img src={logoImg} alt="Logo" />
-                <Form ref={formRef} onSubmit={handlerSubmit}>
-                    <h1>Faça seu cadastro</h1>
+                <AnimationContainer>
+                    <img src={logoImg} alt="Logo" />
+                    <Form ref={formRef} onSubmit={handlerSubmit}>
+                        <h1>Faça seu cadastro</h1>
 
-                    <Input
-                        name="name"
-                        icon={FiUser}
-                        type="text"
-                        placeholder="Nome"
-                    />
+                        <Input
+                            name="name"
+                            icon={FiUser}
+                            type="text"
+                            placeholder="Nome"
+                        />
 
-                    <Input name="email" icon={FiMail} placeholder="Email" />
+                        <Input name="email" icon={FiMail} placeholder="Email" />
 
-                    <Input
-                        name="password"
-                        icon={FiLock}
-                        type="password"
-                        placeholder="Senha"
-                    />
+                        <Input
+                            name="password"
+                            icon={FiLock}
+                            type="password"
+                            placeholder="Senha"
+                        />
 
-                    <Button type="submit">Cdastrar</Button>
-                </Form>
+                        <Button type="submit">Cdastrar</Button>
+                    </Form>
 
-                <a href="#criar">
-                    <FiArrowLeft />
-                    Voltar para Logon
-                </a>
+                    <Link to="/">
+                        <FiArrowLeft />
+                        Voltar para Logon
+                    </Link>
+                </AnimationContainer>
             </Content>
         </Container>
     );

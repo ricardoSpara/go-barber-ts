@@ -4,7 +4,8 @@ import * as Yup from 'yup';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 
-import { Container, Content, Background } from './styles';
+import { Link } from 'react-router-dom';
+import { Container, Content, Background, AnimationContainer } from './styles';
 import logoImg from '../../assets/logo.svg';
 import getValidationErros from '../../utils/getValidationErrors';
 import Input from '../../components/Input';
@@ -49,6 +50,7 @@ const SignIn: React.FC = () => {
                     const errors = getValidationErros(err);
 
                     formRef.current?.setErrors(errors);
+                    return;
                 }
 
                 addToast({
@@ -65,32 +67,34 @@ const SignIn: React.FC = () => {
     return (
         <Container>
             <Content>
-                <img src={logoImg} alt="Logo" />
-                <Form ref={formRef} onSubmit={handlerSubmit}>
-                    <h1>Faça seu login</h1>
-                    <Input
-                        name="email"
-                        icon={FiMail}
-                        type="email"
-                        placeholder="Email"
-                    />
+                <AnimationContainer>
+                    <img src={logoImg} alt="Logo" />
+                    <Form ref={formRef} onSubmit={handlerSubmit}>
+                        <h1>Faça seu login</h1>
+                        <Input
+                            name="email"
+                            icon={FiMail}
+                            type="email"
+                            placeholder="Email"
+                        />
 
-                    <Input
-                        name="password"
-                        icon={FiLock}
-                        type="password"
-                        placeholder="Senha"
-                    />
+                        <Input
+                            name="password"
+                            icon={FiLock}
+                            type="password"
+                            placeholder="Senha"
+                        />
 
-                    <Button type="submit">Entrar</Button>
+                        <Button type="submit">Entrar</Button>
 
-                    <a href="#forgot">Esqueci minha senha</a>
-                </Form>
+                        <a href="#forgot">Esqueci minha senha</a>
+                    </Form>
 
-                <a href="#criar">
-                    <FiLogIn />
-                    Criar conta
-                </a>
+                    <Link to="/signup">
+                        <FiLogIn />
+                        Criar conta
+                    </Link>
+                </AnimationContainer>
             </Content>
             <Background />
         </Container>
