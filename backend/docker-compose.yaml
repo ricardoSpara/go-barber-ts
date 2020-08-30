@@ -1,19 +1,21 @@
-version: "3"
+version: '3'
 
 services:
-  node:
-    build: .
-    ports:
-      - "${PORT:-3333}:3333"
-    volumes:
-      - ".:/usr/app"
-    depends_on:
-      - db
+  # app:
+  #   build: .
+  #   ports:
+  #     - '${PORT:-3333}:3333'
+  #   environment:
+  #     - CHOKIDAR_USEPOLLING=true
+  #   volumes:
+  #     - '.:/usr/app'
+  #   depends_on:
+  #     - db
 
   db:
-    image: "postgres:alpine"
+    image: 'postgres:alpine'
     environment:
       POSTGRES_DB: gostack_gobarber
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-docker}
     ports:
-      - "5432:5432"
+      - '5432:5432'

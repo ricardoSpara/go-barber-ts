@@ -4,9 +4,9 @@ import cors from 'cors';
 import 'express-async-errors';
 import bodyParser from 'body-parser';
 import routes from './routes';
-import './database';
-import uploadConfig from './config/upload';
-import AppError from './errors/AppError';
+import '../typeorm';
+import uploadConfig from '../../../config/upload';
+import AppError from '../../errors/AppError';
 
 const app = express();
 

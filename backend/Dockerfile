@@ -10,8 +10,6 @@ RUN yarn install
 
 COPY . .
 
-RUN yarn build
-
 EXPOSE $PORT
 
 CMD [ "yarn", "dev:server"]
