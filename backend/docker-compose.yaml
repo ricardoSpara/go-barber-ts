@@ -3,7 +3,7 @@ version: '3'
 services:
   app:
     build: .
-    container_name: 'app'
+    container_name: app
     ports:
       - '${PORT:-3333}:3333'
     environment:
@@ -15,7 +15,7 @@ services:
 
   db:
     image: 'postgres:alpine'
-    container_name: 'db'
+    container_name: db
     environment:
       POSTGRES_DB: gostack_gobarber
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-docker}
