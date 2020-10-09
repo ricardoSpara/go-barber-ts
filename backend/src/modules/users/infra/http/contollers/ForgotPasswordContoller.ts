@@ -12,6 +12,6 @@ export default class ResetPasswordContoller {
 
     await sendForgotPasswordEmailService.run({ email });
 
-    return response.status(204);
+    return response.status(204).send();
   }
 }
