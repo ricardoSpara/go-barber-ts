@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
-import ForgotPasswordContoller from '../contollers/ForgotPasswordContoller';
-import ResetPasswordContoller from '../contollers/ResetPasswordContoller';
+import ForgotPasswordContoller from '../controllers/ForgotPasswordContoller';
+import ResetPasswordContoller from '../controllers/ResetPasswordContoller';
 
 const passwordRoutes = Router();
 const forgotPasswordContoller = new ForgotPasswordContoller();
