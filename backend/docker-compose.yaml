@@ -12,6 +12,7 @@ services:
       - '.:/usr/app'
     depends_on:
       - db
+      - mongodb
 
   db:
     image: 'postgres:alpine'
@@ -22,8 +23,8 @@ services:
     ports:
       - '5432:5432'
 
-  mongo:
+  mongodb:
     image: mongo
-    container_name: mongo
+    container_name: mongodb
     ports:
       - '27017:27017'

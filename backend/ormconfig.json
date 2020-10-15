@@ -20,7 +20,7 @@
   {
     "name": "mongo",
     "type": "mongodb",
-    "host": "localhost",
+    "host": "mongodb",
     "port": 27017,
     "database": "gobarber",
     "useUnifiedTopology": true,
