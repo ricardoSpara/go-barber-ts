@@ -1,17 +1,28 @@
 import { Router } from 'express';
+import { celebrate, Segments, Joi } from 'celebrate';
 
 import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
-import AppointmentsContoller from '../controllers/AppointmentsContoller';
+import AppointmentsController from '../controllers/AppointmentsController';
+
 import ProviderAppointmentsController from '../controllers/ProviderAppointmentsController';
 
-const appointmentsRoutes = Router();
-const appointmentsContoller = new AppointmentsContoller();
+const appointmentsRouter = Router();
+const appointmentsController = new AppointmentsController();
 const providerAppointmentsController = new ProviderAppointmentsController();
 
-appointmentsRoutes.use(ensureAuthenticated);
+appointmentsRouter.use(ensureAuthenticated);
 
-appointmentsRoutes.get('/me', providerAppointmentsController.index);
+appointmentsRouter.post(
+  '/',
+  celebrate({
+    [Segments.BODY]: {
+      provider_id: Joi.string().uuid().required(),
+      date: Joi.string().required(),
+    },
+  }),
+  appointmentsController.create,
+);
 
-appointmentsRoutes.post('/', appointmentsContoller.create);
+appointmentsRouter.get('/me', providerAppointmentsController.index);
 
-export default appointmentsRoutes;
+export default appointmentsRouter;
