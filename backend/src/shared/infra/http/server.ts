@@ -1,12 +1,16 @@
 import 'reflect-metadata';
+import 'dotenv/config';
+
 import express, { Response, Request, NextFunction } from 'express';
+import bodyParser from 'body-parser';
 import { errors } from 'celebrate';
 import cors from 'cors';
 import 'express-async-errors';
-import bodyParser from 'body-parser';
+
 import uploadConfig from '@config/upload';
 import AppError from '@shared/errors/AppError';
 import routes from './routes';
+
 import '@shared/infra/typeorm';
 import '@shared/container';
 
@@ -34,9 +38,7 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
       .json({ status: 'error', message: err.message });
   }
 
-  return response
-    .status(500)
-    .json({ status: 'error', message: 'Internal server error' });
+  return response.status(500).json({ status: 'error', message: err.message });
 });
 
 app.listen(3333, () => {

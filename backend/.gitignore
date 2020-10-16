@@ -4,3 +4,4 @@
 !/tmp/.gitkeep
 /data
 /coverge
+.env
